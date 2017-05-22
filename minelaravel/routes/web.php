@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+//Route::get('admin','Admin\RegisterController@index');
+Route::group(['perfix'=>'admin'],function (){
+    Route::get('/','Admin\LoginController@index');
+    Route::get('register','Admin\RegisterController@index');
+
+
+
+
+});
