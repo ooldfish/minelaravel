@@ -14,12 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
-//Route::get('admin','Admin\RegisterController@index');
-Route::group(['perfix'=>'admin'],function (){
+Route::get('admin','Admin\LoginController@index')->name('index');
+Route::get('admin/login','Admin\LoginController@login')->name('login');
+Route::get('admin/register','Admin\RegisterController@index')->name('register');
+/*Route::group(['perfix'=>'admin','middleware'=>'auth'],function (){
     Route::get('/','Admin\LoginController@index');
-    Route::get('register','Admin\RegisterController@index');
 
+    Route::get('/login','Admin\LoginController@login');
 
+});*/
+//Auth::routes();
 
-
-});
+Route::get('/home', 'HomeController@index')->name('home');
